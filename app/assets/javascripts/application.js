@@ -28,6 +28,7 @@
 //= require application/sticky_tools
 //= require action_page
 //= require_tree ./application
+//= require_tree ./app
 //= require jquery-timeago
 //= require sweetalert
 //= require application/smarty_streets
