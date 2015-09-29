@@ -32,6 +32,19 @@
     margin-left: 12px;
   }
 
+  ul ul {
+    margin-left: 22px;
+  }
+
+  input ~ ul {
+    display: none;
+  }
+
+  input:checked:not(:disabled) ~ ul {
+    display: block;
+  }
+
+
   input {
     position: absolute;
     opacity: 0;
@@ -59,7 +72,7 @@
     background: url("/images/checkbox_icons.png") no-repeat 0 -32px;
     content: "";
     width: 16px;
-    margin: 0 10px 0 0;
+    margin: 0 10px 5px 0;
     vertical-align: middle;
 
     display: inline-block;
@@ -103,20 +116,9 @@
     text-decoration: underline;
   }
 
-  input + label + ul {
-    margin: 0 0 0 22px;
-  }
-  input ~ ul {
-    display: none;
-  }
 
-  input:checked:not(:disabled) ~ ul {
-    display: block;
-  }
 
 }
-
-
 
 
 

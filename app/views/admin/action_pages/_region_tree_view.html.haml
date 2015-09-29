@@ -1,20 +1,23 @@
 .panel.panel-default
-  .panel-heading Region Specification
+  .panel-heading Email Targeting
   .panel-body
 
     .css-treeview
       %ul
-        %li
+        %li.has-children
           %input#item-0{:checked => "checked", :type => "checkbox"}/
-          %label{:for => "item-0"} Global
+          %label
+            %label.check{:for => "item-0"}
+              %input{:id => 'me', :checked => "checked", :type => "checkbox"}
+              Global
           %ul
 
             %li.has-children
-              %input#item-0-0{:checked => "checked", :type => "checkbox"}/
+              %input#item-0-0{:type => "checkbox"}/
               %label{:for => "item-0-0"}
                 %label.check
                   %input{:type => "checkbox"}
-                United States
+                US Only
 
               %ul.subnation
                 %li
@@ -34,21 +37,27 @@
                     %input{:type => "checkbox"}
                     DC, Distric of Columbia
 
+            %li.has-children
+              %input#item-0-0{:type => "checkbox"}/
+              %label{:for => "item-0-0"}
+                %label.check
+                  %input{:type => "checkbox"}
+                International
 
-            %li
-              %label.check
-                %input{:type => "checkbox"}
-                Germany
-
-            %li
-              %label.check
-                %input{:type => "checkbox"}
-                Egypt
-            %li
-              %label.check
-                %input{:type => "checkbox"}
-                UK
-            %li
-              %label.check
-                %input{:type => "checkbox"}
-                Russia
+              %ul.subnation
+                %li
+                  %label.check
+                    %input{:type => "checkbox"}
+                    DEU, Germany
+                %li
+                  %label.check
+                    %input{:type => "checkbox"}
+                    AUS, Australia
+                %li
+                  %label.check
+                    %input{:type => "checkbox"}
+                      GBR, United Kingdom
+                %li
+                  %label.check
+                    %input{:type => "checkbox"}
+                      RUS, Russia
