@@ -1,4 +1,5 @@
 Actioncenter::Application.routes.draw do
+  resources :locations
   get "robots.txt", controller: :robots, action: :show, format: 'text'
   get "/heartbeat", to: "robots#heartbeat"
 

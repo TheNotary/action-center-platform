@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @location.name
+%p
+  %b Symbol:
+  = @location.symbol
+%p
+  %b Location type:
+  = @location.location_type
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path
