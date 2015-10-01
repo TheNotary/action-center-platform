@@ -4,60 +4,62 @@
 
     .css-treeview
       %ul
-        %li.has-children
-          %input#item-0{:checked => "checked", :type => "checkbox"}/
-          %label
+
+        %li
+          %input.collapsable{ :id => "item-0", :checked => "checked", :type => "checkbox"}/
+          %label.collapsable
             %label.check{:for => "item-0"}
-              %input{:id => 'me', :checked => "checked", :type => "checkbox"}
+              %input{:id => 'me', :checked => "checked", :type => "checkbox", :class => "treeish"}
               Global
           %ul
 
-            %li.has-children
-              %input#item-0-0{:type => "checkbox"}/
-              %label{:for => "item-0-0"}
-                %label.check
-                  %input{:type => "checkbox"}
+            %li
+              %input.collapsable{ :id => "item-0-0", :type => "checkbox"}/
+              %label.collapsable
+                %label.check{:for => "item-0-0"}
+                  %input{:type => "checkbox", :class => "treeish"}
                 US Only
 
               %ul.subnation
+
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                     CA, California
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                     IL, Illinois
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                     NY, New York
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                     DC, Distric of Columbia
 
-            %li.has-children
-              %input#item-0-0{:type => "checkbox"}/
-              %label{:for => "item-0-0"}
-                %label.check
-                  %input{:type => "checkbox"}
+            %li
+              %input.collapsable{:id => "item-0-0", :type => "checkbox"}/
+              %label.collapsable
+                %label.check{:for => "item-0-0"}
+                  %input{:type => "checkbox", :class => "treeish"}
                 International
 
               %ul.subnation
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                     DEU, Germany
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                     AUS, Australia
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                       GBR, United Kingdom
                 %li
                   %label.check
-                    %input{:type => "checkbox"}
+                    %input{:type => "checkbox", :class => "treeish"}
                       RUS, Russia

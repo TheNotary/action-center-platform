@@ -36,3 +36,4 @@
 //= require fuzzyset_util
 //= require bootstrap-formhelpers-phone
 //= require application/social-buttons
+//= require tree_view

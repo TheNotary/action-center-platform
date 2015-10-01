@@ -67,35 +67,26 @@
     opacity: 0.6;
   }
 
-  label::before {
-    cursor: pointer;
-    background: url("/images/checkbox_icons.png") no-repeat 0 -32px;
-    content: "";
+  // plus sign icon
+  label.collapsable::before {
     width: 16px;
-    margin: 0 10px 5px 0;
-    vertical-align: middle;
-
-    display: inline-block;
     height: 16px;
     line-height: 16px;
+    margin: 0 10px 5px 0;
+    // -32px = plus sign
+    background: url("/images/checkbox_icons.png") no-repeat 0 -32px;
+    content: "";
+    cursor: pointer;
     vertical-align: middle;
+    display: inline-block;
   }
 
-  input:checked + label::before {
+  input.collapsable:checked + label.collapsable::before {
+    // -16px = minus sign
     background: url("/images/checkbox_icons.png") no-repeat 0 -16px;
   }
 
-  label.check {
-    background: url("");
-    margin-left:0px;
-  }
-
-  label.check::before {
-    margin:0 -10px 0 0;
-    background: url("");
-  }
-
-  label.check input {
+  label.check input:not(.collapsable) {
     opacity:1;
     position: relative;
     margin-top:2px;
@@ -117,6 +108,18 @@
   }
 
 
+
+  // label.check are labels that are marked to 'have no children'
+  // Can this be queried with css...
+  // label.check {
+  //   background: url("");
+  //   margin-left:0px;
+  // }
+
+  // label.check::before {
+  //   margin:0 -10px 0 0;
+  //   background: url("");
+  // }
 
 }
 
