@@ -182,6 +182,7 @@ class Admin::ActionPagesController < Admin::ApplicationController
                   :call_campaign_id, :what_to_say, :redirect_url, :email_text, :enable_redirect,
                   :victory, :victory_message, :partner_id,
                   :archived_redirect_action_page_id, :archived,
+                  { :location_ids => [] },
                   {action_page_images_attributes: [:id, :action_page_image]},
                   {tweet_attributes: [:id, :target, :target_house,
                                       :target_senate, :message, :cta,
