@@ -43,16 +43,16 @@ ul li {
   margin-bottom: 10px;
 }
 
-.link-button { 
-     background: none;
-     border: none;
-     color: $red;
-     text-decoration: none;
-     padding: 0;
-     cursor: pointer;
-     &:hover {
-      @extend a:hover;
-     } 
+.link-button {
+  background: none;
+  border: none;
+  color: $red;
+  text-decoration: none;
+  padding: 0;
+  cursor: pointer;
+  &:hover {
+    @extend a:hover;
+  }
 }
 
 .push {height: 100px;}
@@ -280,7 +280,7 @@ Styles for the alert box
       font-size: 15px;
       height: auto;
       max-width: 500px;
-      
+
       @media (max-width: $screen-xs-max) {
         left:20px;
         right: 20px;
@@ -389,4 +389,32 @@ div#email_target_text{
   color: #FFF;
   border-color: #C00;
   background-color: #C00;
+}
+
+.simple-well {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dddddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  background-color: white;
+
+  .heading {
+    background-color: whitesmoke;
+    color: #333333;
+    border-color: #dddddd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 100;
+  }
+
+  .body {
+    padding-top: 10px;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: #dddddd;
+  }
 }

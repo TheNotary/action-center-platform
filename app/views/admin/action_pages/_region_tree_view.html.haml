@@ -1,30 +1,32 @@
-.panel.panel-default
-  .panel-heading Email Targeting
-  .panel-body
+.form-group
 
-    .css-treeview
-      %ul
+  .simple-well
+    .heading
+      Region Tags
+    .body
+      .css-treeview
+        %ul
 
-        %li
-          %input.collapsable{ :id => "item-0", :checked => "checked", :type => "checkbox"}/
-          %label.collapsable
-            %label.check{:for => "item-0"}
-              = check_box_tag "action_page[location_ids][]", @root_location.id, f.object.locations.include?(@root_location), class: "indeterminate-checkbox"
-              = @root_location.name.capitalize
-          %ul
+          %li
+            %input.collapsable{ :id => "item-0", :checked => "checked", :type => "checkbox"}/
+            %label.collapsable
+              %label.check{:for => "item-0"}
+                = check_box_tag "action_page[location_ids][]", @root_location.id, f.object.locations.include?(@root_location), class: "indeterminate-checkbox"
+                = @root_location.name.capitalize
+            %ul
 
-            - @root_location.locations.each do |l|
-              %li
-                %input.collapsable{ :id => "item-0-0", :type => "checkbox"}/
-                %label.collapsable
-                  %label.check{:for => "item-0-0"}
-                    = check_box_tag "action_page[location_ids][]", l.id, f.object.locations.include?(l), class: "indeterminate-checkbox"
-                  = l.name.split.map(&:capitalize)*' '
+              - @root_location.locations.each do |l|
+                %li
+                  %input.collapsable{ :id => "item-0-0", :type => "checkbox"}/
+                  %label.collapsable
+                    %label.check{:for => "item-0-0"}
+                      = check_box_tag "action_page[location_ids][]", l.id, f.object.locations.include?(l), class: "indeterminate-checkbox"
+                    = l.name.split.map(&:capitalize)*' '
 
-                %ul.subnation
-                  - l.locations.each do |sub_l|
-                    %li
-                      %label
-                        %label.check
-                          = check_box_tag "action_page[location_ids][]", sub_l.id, f.object.locations.include?(sub_l), class: "indeterminate-checkbox"
-                          #{sub_l.symbol.upcase}, #{sub_l.name}
+                  %ul.subnation
+                    - l.locations.each do |sub_l|
+                      %li
+                        %label
+                          %label.check
+                            = check_box_tag "action_page[location_ids][]", sub_l.id, f.object.locations.include?(sub_l), class: "indeterminate-checkbox"
+                            #{sub_l.symbol.upcase}, #{sub_l.name}

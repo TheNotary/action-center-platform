@@ -29,7 +29,7 @@
   }
 
   ul.subnation li {
-    margin-left: 12px;
+    margin-left: 25px;
   }
 
   ul ul {
@@ -90,6 +90,7 @@
     opacity:1;
     position: relative;
     margin-top:2px;
+    margin-right: 15px;
   }
 
 
@@ -106,20 +107,6 @@
   a:hover {
     text-decoration: underline;
   }
-
-
-
-  // label.check are labels that are marked to 'have no children'
-  // Can this be queried with css...
-  // label.check {
-  //   background: url("");
-  //   margin-left:0px;
-  // }
-
-  // label.check::before {
-  //   margin:0 -10px 0 0;
-  //   background: url("");
-  // }
 
 }
 
