@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 20160107220954) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "locations", force: true do |t|
+    t.integer  "location_id"
     t.string   "name"
     t.string   "symbol"
     t.string   "location_type"
