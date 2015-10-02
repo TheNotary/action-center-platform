@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 20160107220954) do
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
 
+  create_table "al_associations", id: false, force: true do |t|
+    t.integer "action_page_id"
+    t.integer "location_id"
+  end
+
+  add_index "al_associations", ["action_page_id", "location_id"], name: "index_al_associations_on_action_page_id_and_location_id", using: :btree
+
   create_table "bounces", force: true do |t|
     t.string "email"
   end
@@ -159,7 +166,6 @@ ActiveRecord::Schema.define(version: 20160107220954) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "locations", force: true do |t|
-    t.integer  "location_id"
     t.string   "name"
     t.string   "symbol"
     t.string   "location_type"

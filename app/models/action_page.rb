@@ -23,6 +23,9 @@ class ActionPage < ActiveRecord::Base
   validates_attachment_content_type [:og_image, :background_image, :featured_image],
     :content_type => /\Aimage\/.*\Z/
 
+  has_many :al_associations
+  has_many :locations, -> { uniq }, through: :al_associations
+
   #validates_length_of :og_title, maximum: 65
   after_save :no_drafts_on_homepage
 
