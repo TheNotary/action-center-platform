@@ -10,64 +10,21 @@
           %label.collapsable
             %label.check{:for => "item-0"}
               %input.indeterminate-checkbox{:id => 'me', :checked => "checked", :type => "checkbox"}
-              Global
+              = @root_location.name.capitalize
           %ul
 
-            %li
-              %input.collapsable{ :id => "item-0-0", :type => "checkbox"}/
-              %label.collapsable
-                %label.check{:for => "item-0-0"}
-                  %input.indeterminate-checkbox{ :name => "united_states", :type => "checkbox"}
-                United States
+            - @root_location.locations.each do |l|
+              %li
+                %input.collapsable{ :id => "item-0-0", :type => "checkbox"}/
+                %label.collapsable
+                  %label.check{:for => "item-0-0"}
+                    %input.indeterminate-checkbox{ :name => "united_states", :type => "checkbox"}
+                  = l.name.split.map(&:capitalize)*' '
 
-              %ul.subnation
-
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                      CA, California
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                      IL, Illinois
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                      NY, New York
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                      DC, Distric of Columbia
-
-            %li
-              %input.collapsable{:id => "item-0-0", :type => "checkbox"}/
-              %label.collapsable
-                %label.check
-                  %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                International
-
-              %ul.subnation
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                      DEU, Germany
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                      AUS, Australia
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                        GBR, United Kingdom
-                %li
-                  %label
-                    %label.check
-                      %input{:type => "checkbox", :class => "indeterminate-checkbox"}
-                        RUS, Russia
+                %ul.subnation
+                  - l.locations.each do |sub_l|
+                    %li
+                      %label
+                        %label.check
+                          %input{:type => "checkbox", :class => "indeterminate-checkbox"}
+                          #{sub_l.symbol.upcase}, #{sub_l.name}

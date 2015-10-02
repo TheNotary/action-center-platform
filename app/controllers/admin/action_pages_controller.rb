@@ -53,6 +53,8 @@ class Admin::ActionPagesController < Admin::ApplicationController
     @actionPage.call_campaign ||= CallCampaign.new
     @actionPage.email_campaign ||= EmailCampaign.new
 
+    @root_location = Location.find_by_name('global')
+
     @topic_categories = TopicCategory.all.order :name
   end
 
