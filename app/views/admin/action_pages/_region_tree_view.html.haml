@@ -8,18 +8,18 @@
         %ul
 
           %li
-            %input.collapsable{ :id => "item-0", :checked => "checked", :type => "checkbox"}/
-            %label.collapsable
-              %label.check{:for => "item-0"}
+            %input.collapsable{ :id => "collapsible-global", :checked => "checked", :type => "checkbox"}/
+            %label.collapsable{ :for => "collapsible-global"}
+              %label.check{:for => "collapsible-global"}
                 = check_box_tag "action_page[location_ids][]", @root_location.id, f.object.locations.include?(@root_location), class: "indeterminate-checkbox"
                 = @root_location.name.capitalize
             %ul
 
               - @root_location.locations.each do |l|
                 %li
-                  %input.collapsable{ :id => "item-0-0", :type => "checkbox"}/
-                  %label.collapsable
-                    %label.check{:for => "item-0-0"}
+                  %input.collapsable{ :id => "collapsible-#{l.id}", :type => "checkbox"}/
+                  %label.collapsable{:for => "collapsible-#{l.id}"}
+                    %label.check{:for => "collapsible-#{l.id}"}
                       = check_box_tag "action_page[location_ids][]", l.id, f.object.locations.include?(l), class: "indeterminate-checkbox"
                     = l.name.split.map(&:capitalize)*' '
 
