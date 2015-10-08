@@ -29,9 +29,11 @@ class Admin::ActionPagesController < Admin::ApplicationController
     @petition = @actionPage.petition = Petition.new
     @tweet    = @actionPage.tweet    = Tweet.new
     @call_campaign = @actionPage.call_campaign = CallCampaign.new
-    # Todo - Gotta convert email campaigns to singular - Thomas
     @email_campaign = @actionPage.email_campaign = EmailCampaign.new
     @topic_categories = TopicCategory.all.order :name
+
+    @root_location = Location.find_by_name('Global')
+
     @actionPage.email_text = Rails.application.config.action_pages_email_text
   end
 
@@ -49,13 +51,11 @@ class Admin::ActionPagesController < Admin::ApplicationController
     @actionPage.partner ||= Partner.new
     @actionPage.petition ||= Petition.new
     @actionPage.tweet ||= Tweet.new
-
     @actionPage.call_campaign ||= CallCampaign.new
     @actionPage.email_campaign ||= EmailCampaign.new
-
-    @root_location = Location.find_by_name('global')
-
     @topic_categories = TopicCategory.all.order :name
+
+    @root_location = Location.find_by_name('Global')
   end
 
   def update

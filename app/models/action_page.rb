@@ -29,9 +29,12 @@ class ActionPage < ActiveRecord::Base
   #validates_length_of :og_title, maximum: 65
   after_save :no_drafts_on_homepage
 
+  after_initialize :set_default_location
+
   def should_generate_new_friendly_id?
     true
   end
+
   def call_tool_title
     call_campaign && call_campaign.title.length > 0 && call_campaign.title || 'Call Your Legislators'
   end
@@ -78,5 +81,10 @@ class ActionPage < ActiveRecord::Base
 
   def no_drafts_on_homepage
     FeaturedActionPage.where(action_page_id: id).destroy_all unless published?
+  end
+
+  def set_default_location
+    self.locations << Location.find_by_name("Global")
+    self.locations << Location.find_by_name("International")
   end
 end

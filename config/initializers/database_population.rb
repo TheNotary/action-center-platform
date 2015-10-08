@@ -2,7 +2,7 @@
 def populate_locations
   Location.delete_all
 
-  global = Location.create(name: "global", location_type: "organizational")
+  global = Location.create(name: "Global", location_type: "organizational")
 
   us = global.locations.create(name: "United States", location_type: "nation")
 
