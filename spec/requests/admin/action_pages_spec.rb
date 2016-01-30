@@ -39,6 +39,13 @@ RSpec.describe "Admin Action Pages", type: :request do
       expect(ActionPage.count).to eq 1
     end
 
+    it "should be fast" do
+      # binding.pry
+      # Benchmark.realtime{
+      #   get '/admin/action_pages'
+      # }.should < 0.5
+    end
+
   end
 
 end

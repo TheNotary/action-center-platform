@@ -2,11 +2,6 @@ Actioncenter::Application.routes.draw do
   get "robots.txt", controller: :robots, action: :show, format: 'text'
   get "/heartbeat", to: "robots#heartbeat"
 
-
-
-
-  # Root - Redundant - TODO - refactor
-  get "welcome/index"
   root 'welcome#index'
 
   # EFF TOOLS (Call, Share, Petition) - External Reusable Services

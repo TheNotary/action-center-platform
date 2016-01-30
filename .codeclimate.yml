@@ -2,24 +2,39 @@
 engines:
   brakeman:
     enabled: true
+    exclude_fingerprints:
+    - 32ff2c524d8067c94f76065cc2513a6f7c21219566051389941d6d00b370b356
+    - eb0eda9ff60a50f076dc78f70958257820c1b49aeb06424bfde68112123ed74b
+    - 9d34f74a63bc5c80fb5cdc8d06a619b967eb04eae3423b780d577076d40a26c2
+    - ba55e13e182f89b5fd2f153423a39655
   bundler-audit:
     enabled: true
   csslint:
     enabled: true
   duplication:
-    enabled: true
+    enabled: false
     config:
       languages:
       - ruby
       - javascript
-      - python
-      - php
   eslint:
     enabled: true
   fixme:
     enabled: true
   rubocop:
     enabled: true
+    checks:
+      Rubocop/Lint/AssignmentInCondition:
+        enabled: false
+    exclude_fingerprints:
+      - 945e912d3f8ee02458de628fbd8eca9e
+      - 817d77c195dc8aedaca35d928bb11df1
+exclude_paths:
+- spec/**/*
+- vendor/**/*
+- tmp/**/*
+- log/**/*
+- .git/**/*
 ratings:
   paths:
   - Gemfile.lock
@@ -42,13 +57,3 @@ exclude_paths:
 - script/**/*
 - spec/**/*
 - vendor/**/*
-engines:
-  # ... CONFIG CONTENT ...
-  brakeman:
-    enabled: true
-    # ... CONFIG CONTENT ...
-    exclude_fingerprints:
-    - 32ff2c524d8067c94f76065cc2513a6f7c21219566051389941d6d00b370b356
-    - eb0eda9ff60a50f076dc78f70958257820c1b49aeb06424bfde68112123ed74b
-    - 9d34f74a63bc5c80fb5cdc8d06a619b967eb04eae3423b780d577076d40a26c2
-# ... CONFIG CONTENT ...

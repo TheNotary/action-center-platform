@@ -134,7 +134,8 @@ class ToolsController < ApplicationController
             url.query = [url.query.presence, 'thankyou=1'].join('&')
             redirect_to url.to_s
           rescue
-            redirect_to welcome_index_path
+            # This redirect will take place if they've disabled ajax/javascript?
+            redirect_to '/'
           end
         end
       end
