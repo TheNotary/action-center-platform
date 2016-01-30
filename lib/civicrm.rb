@@ -8,8 +8,14 @@ module CiviCRM
       )
     end
 
+    # This method talks to the CiviCRM which the deploying party may have setup
+    # It basically just gives CiviCRM the User info submitted (email), whether
+    # they want to recieve email from the list, and what app they joined with
     def subscribe!(opt_in=false, source='action center')
       return nil if CiviCRM.skip_crm?
+      opt_in = options[:opt_in] || false
+      source = options[:source] || 'action center'
+
       res = CiviCRM::subscribe contact_attributes.merge(opt_in: opt_in, source: source)
       update_attributes(contact_id: res['contact_id']) if (res && res['contact_id'])
     end

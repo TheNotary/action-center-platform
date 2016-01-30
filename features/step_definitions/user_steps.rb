@@ -118,8 +118,8 @@ end
 When(/^I create a vanilla action$/) do
   sign_in
   visit '/admin/action_pages'
-  loop while first(:link, "Create new action").nil?
-  first(:link, "Create new action").click
+  loop until link_node = first(:link, "Create new action")
+  link_node.click
   confirm_action_page_new_view_works
   fill_in_petition_action_inputs
 end
@@ -223,7 +223,7 @@ Given(/^A petition exists that's one signature away from its goal$/) do
 end
 
 When(/^I browse to the action page$/) do
-  visit "/action/#{@action_page.title.downcase.gsub(" ", "-")}"
+  visit "/action/#{@action_page.title.downcase.tr(" ", "-")}"
 end
 
 def sign_the_petition
@@ -247,13 +247,13 @@ When(/^the action is marked a victory$/) do
 end
 
 Then(/^I see a victory message$/) do
-  visit "/action/#{@action_page.title.downcase.gsub(" ", "-")}"
+  visit "/action/#{@action_page.title.downcase.tr(" ", "-")}"
   expect(page).to have_content("We won")
 end
 
 
 When(/^I sign a petition that's one signature away from victory$/) do
-  visit "/action/#{@action_page.title.downcase.gsub(" ", "-")}"
+  visit "/action/#{@action_page.title.downcase.tr(" ", "-")}"
 
   # check action progress is shown
   expect(page).to have_content("99 / 100 signatures")
@@ -268,25 +268,27 @@ end
 
 
 When(/^I click to add an image to the gallery of a new ActionPage$/) do
+
   # get to a new action_page's view
   visit '/admin/action_pages'
-  loop while first(:link, "Create new action").nil?
-
-  first(:link, "Create new action").click
+  loop until link_node = first(:link, "Create new action")
+  link_node.click
 
   Capybara.ignore_hidden_elements = false
-  loop while first(:link, "Open Gallery").nil?
+  loop until link_node = first(:link, "Open Gallery")
+  link_node.click
 
-  first(:link, "Open Gallery").click
   path = "#{Rails.root}/features/upload_files/img.png"
   attach_file("file", path)
 
   Capybara.ignore_hidden_elements = true
 
+  # After the below button is pressed, the app queries for actionbucket.s3-us-west-1.amazonaws.com
+  # which is incorrect.  Maybe it's posting to it...
   click_button "Start"
-  loop while first(:img, ".preview > a:nth-child(1) > img:nth-child(1)").nil?
+  loop until img_node = first(:img, ".preview > a:nth-child(1) > img:nth-child(1)")
 
-  @upload_url = first(:img, ".preview > a:nth-child(1) > img:nth-child(1)")[:src]
+  @upload_url = img_node[:src]
   bb_code = "![img.png](#{@upload_url})"
 
   click_button "Close"
@@ -301,7 +303,7 @@ end
 When(/^the image shows up as uploaded over ajax$/) do
   loop until img_node = first(:img, "#description > p:nth-child(1) > img:nth-child(1)")
 
-  uploaded_img_src = first(:img, "#description > p:nth-child(1) > img:nth-child(1)")[:src]
+  uploaded_img_src = img_node[:src]
 
   expect(/^https:\/\/.*amazonaws.com\/uploads\/.*\/img.png$/).to match uploaded_img_src
 end
@@ -348,7 +350,7 @@ When(/^I click the button to lookup my reps$/) do
 end
 
 
-Given(/^my test env has Internet access and I have an S(\d+) key$/) do |arg1|
+Given(/^my test env has Internet access and I have an S3 key$/) do
   pending if this_machine_offline? or ENV['amazon_access_key_id'].nil?
 end
 
@@ -358,7 +360,7 @@ def this_machine_offline?
 
   require 'net/http'
   begin
-    response = Net::HTTP.get(URI.parse('http://www.example.com/'))
+    Net::HTTP.get(URI.parse('http://www.example.com/'))
     $OfflineMode = false
   rescue
     $OfflineMode = true

@@ -93,7 +93,6 @@ class ToolsController < ApplicationController
     end
 
     if @signature.save
-
       # You will only get here if you are not logged in.  Subscribe does not show for logged in users,
       # since they are presented that option at signup.
       if params[:subscribe] == "1"
@@ -103,8 +102,7 @@ class ToolsController < ApplicationController
         )
 
         @source = "action center petition :: " + @action_page.title
-        @user.subscribe!(opt_in=false, source=@source)
-
+        @user.subscribe!(source: @source)
       end
 
       if params[:partner_newsletter].present?
@@ -134,7 +132,8 @@ class ToolsController < ApplicationController
             url.query = [url.query.presence, 'thankyou=1'].join('&')
             redirect_to url.to_s
           rescue
-            redirect_to welcome_index_path
+            # This redirect will take place if they've disabled ajax/javascript?
+            redirect_to '/'
           end
         end
       end
@@ -167,8 +166,7 @@ class ToolsController < ApplicationController
       )
 
       @source = "action center email :: " + @action_page.title
-      @user.subscribe!(opt_in=false, source=@source)
-
+      @user.subscribe!(source: @source)
     end
 
     update_congress_scorecards(email_params[:zipcode])
