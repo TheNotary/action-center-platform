@@ -114,6 +114,8 @@ group :development, :test do
   gem "codeclimate-test-reporter", require: nil
 end
 
+gem 'rack-mini-profiler'
+
 group :production do
   gem 'unicorn'
 end

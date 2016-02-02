@@ -3,6 +3,10 @@ class Admin::ApplicationController < ApplicationController
   layout 'admin'
   before_filter :must_be_admin
 
+  before_action do
+    Rack::MiniProfiler.authorize_request
+  end
+
   def manifest
     self.class.manifest || 'admin'
   end

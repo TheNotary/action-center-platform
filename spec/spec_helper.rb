@@ -107,6 +107,13 @@ def login_as_admin
   sign_in FactoryGirl.create(:admin_user)
 end
 
+# For request tests, requires capybara
+def sign_in_user(user)
+  visit '/login'
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
+  click_button "Sign in"
+end
 
 def set_weak_password(user)
   weak_password = "12345678"

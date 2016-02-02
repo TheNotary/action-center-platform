@@ -93,6 +93,7 @@ class ToolsController < ApplicationController
     end
 
     if @signature.save
+
       # You will only get here if you are not logged in.  Subscribe does not show for logged in users,
       # since they are presented that option at signup.
       if params[:subscribe] == "1"
