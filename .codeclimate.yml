@@ -29,12 +29,6 @@ engines:
     exclude_fingerprints:
       - 945e912d3f8ee02458de628fbd8eca9e
       - 817d77c195dc8aedaca35d928bb11df1
-exclude_paths:
-- spec/**/*
-- vendor/**/*
-- tmp/**/*
-- log/**/*
-- .git/**/*
 ratings:
   paths:
   - Gemfile.lock
@@ -51,9 +45,12 @@ ratings:
   - "**.php"
   - "**.py"
 exclude_paths:
+- .git/**/*
 - config/**/*
 - db/**/*
 - features/**/*
+- log/**/*
 - script/**/*
 - spec/**/*
+- tmp/**/*
 - vendor/**/*
