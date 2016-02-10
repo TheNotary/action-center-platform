@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :user_conditional_logic
 
-  before_action do
-    Rack::MiniProfiler.authorize_request
-  end
+  # before_action do
+  #   Rack::MiniProfiler.authorize_request
+  # end
 
   def user_conditional_logic
     if user_signed_in?
