@@ -17,4 +17,8 @@ FactoryGirl.define do
     enable_tweet true
   end
 
+  factory :action_page_with_email, :parent => :action_page do
+    enable_email true
+  end
+
 end
