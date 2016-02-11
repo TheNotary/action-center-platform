@@ -23,13 +23,3 @@
 
 //Remove the no-js class from <html> if js is loading
 document.documentElement.className = document.documentElement.className.replace("no-js", "js");
-
-
-webshims.setOptions('basePath', '/assets/webshims/shims/')
-webshims.setOptions('forms', {
-  //show custom styleable validation bubble
-  replaceValidationUI: false,
-  lazyCustomMessages: true
-});
-//start polyfilling
-webshims.polyfill('forms');

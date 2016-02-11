@@ -14,7 +14,6 @@ gem 'aws-sdk', '< 2.0'
 # Frontend/assets
 gem 'bourbon'
 gem 'fontello_rails_converter'
-gem 'webshims-rails'
 gem 'redcarpet'               # Markdown
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'    # compressor for JavaScript assets

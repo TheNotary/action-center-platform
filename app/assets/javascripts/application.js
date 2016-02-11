@@ -17,7 +17,6 @@
 //= require bootstrap-sass/bootstrap/transition
 
 //= require application/congress-forms
-//= require webshims/polyfiller
 //= require respond
 //= require html5shiv
 //= require bootstrap-sass/bootstrap/collapse

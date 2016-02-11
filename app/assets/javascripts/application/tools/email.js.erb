@@ -142,13 +142,6 @@ $(document).on('ready', function() {
           $('.legislator-info-popover').popover();
 
           $('.email-tool-container').slideDown(200, height_changed);
-          webshims.setOptions('forms', {
-            //show custom styleable validation bubble
-            replaceValidationUI: true,
-            lazyCustomMessages: true
-          });
-
-          //start polyfilling
 
         },
         onLegislatorSubmit: function(legislatorId, legislatorFieldSet) {
