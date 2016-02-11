@@ -5,7 +5,10 @@ require File.expand_path('../config/application', __FILE__)
 
 Actioncenter::Application.load_tasks
 
-RSpec::Core::RakeTask.new(:bench) do |spec|
-  spec.pattern = 'spec/performance/*_perf.rb'
-  spec.verbose = true
+begin
+  RSpec::Core::RakeTask.new(:bench) do |spec|
+    spec.pattern = 'spec/performance/*_perf.rb'
+    spec.verbose = true
+  end
+rescue
 end
